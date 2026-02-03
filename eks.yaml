@@ -2,11 +2,15 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: roboshop
+  name: roboshop  #eks cluster name and region which we are creating now
   region: us-east-1
 
 managedNodeGroups:
   - name: roboshop
-    instanceType: ["m5.large" ,"c3.large" , "c4.large" , "c5.large"]
-    desiredCapacity: 3
-    spot: true
+    instanceType: m5.large
+    # instanceType: ["m5.large" ,"c3.large" , "c4.large" , "c5.large"] #on demand instance type
+    desiredCapacity: 3 # in this we want 3 instances 
+    spot: true # aws data center have lot of resource soo they give this for less cost
+    #here t3.micro will not work we need bigger instances for workernodes
+
+# from managed nodegroup we create a cluster this is taken from eksctl github profile 
